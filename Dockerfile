@@ -24,9 +24,10 @@ COPY calcom/packages ./packages
 
 RUN yarn config set httpTimeout 1200000 && \ 
     npx turbo prune --scope=@calcom/web --docker && \
-    yarn install && \
-    yarn db-deploy && \
-    yarn --cwd packages/prisma seed-app-store
+    yarn install 
+    # && \
+    # yarn db-deploy && \
+    # yarn --cwd packages/prisma seed-app-store
 
 RUN yarn turbo run build --filter=@calcom/web
 
